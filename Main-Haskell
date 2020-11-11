@@ -1,0 +1,145 @@
+main = do
+    putStrLn ("1. -Serie Fibonacci")
+    putStrLn ("2.- Numeros del 1 al 10")
+    putStrLn ("3.- Factorial de un Numero")
+    putStrLn ("4.- Desaparcer Numeros")
+    putStrLn ("5.- Palindromo")
+    putStrLn ("6.- Calculadora basica")
+    putStrLn ("7.- Salir")
+
+    n <- getLine
+    opc(read n)
+    
+opc n = do
+    case n of
+       1 ->serie
+       2 ->numeros
+       3 ->factorial
+       4 ->desaparecer [1,2,3,4,5,6,7,8,9,10]
+       5 ->palindromo
+       6 ->calcu
+       7 ->salir
+
+serie = do
+    putStrLn("Dame un numero de fibonacci")
+    n <-getLine
+    print("El numero es "++show(fibo(read n)))
+
+fibo n =
+  if  n == 0
+    then
+      0
+  else if n == 1
+    then
+      1
+  else
+    fibo(n-1) + fibo(n-2)
+
+numeros = do
+    condicional 1
+
+condicional n = do
+    if n <= 10
+        then do
+            print n
+            condicional(n+1)
+    else
+        putStrLn("Termina")
+        main
+
+factorial = do
+    putStrLn("Digita un numero")
+    num <- getLine
+    print("Factorial: "++show(facto(read num)))
+
+facto n = do
+    if n == 0
+        then 1
+    else
+        n*facto(n-1)
+
+desaparecer x = do
+  print(x)
+  if null x
+    then do
+    putStrLn("termina")
+    main
+  else do
+    let lista = init x
+    numeros(lista) 
+
+palindromo = do
+    putStrLn("Dame un palindromo")
+    x <- getLine
+    let n = x==reverse x
+    print(n)  
+    main
+
+calcu = do
+    putStrLn ("1. -Suma")
+    putStrLn ("2.- Multiplicaciom")
+    putStrLn ("3.- Resta")
+    putStrLn ("4.- Division")
+    putStrLn ("5.- Salir")
+    n <- getLine
+    casos(read n)
+
+casos n = do
+    case n of
+       1 ->suma 
+       2 ->multiplicacion
+       3 ->resta
+       4 ->division
+       5 ->sal
+
+       
+suma = do
+    putStrLn("Numero 1")
+    a <- getLine
+    putStrLn("Numero 2")
+    b <- getLine
+    putStrLn("El resultado es: "++show(sumados (read a) (read b)))
+    main
+
+sumados a b = do
+        a + b
+
+multiplicacion = do
+    putStrLn("Numero 1")
+    a <- getLine
+    putStrLn("Numero 2")
+    b <- getLine
+    putStrLn("El resultado es: "++show(multi (read a) (read b)))
+    main
+
+multi a b = do
+        a * b
+
+resta = do
+    putStrLn("Numero 1")
+    a <- getLine
+    putStrLn("Numero 2")
+    b <- getLine
+    putStrLn("El resultado es: "++show(rest (read a) (read b)))
+    main
+    
+rest a b = do
+        a - b
+
+division = do
+    putStrLn("Numero 1")
+    a <- getLine
+    putStrLn("Numero 2")
+    b <- getLine
+    putStrLn("El resultado es: "++show(divi (read a) (read b)))
+    main
+
+divi a b = do
+        a / b
+
+sal = do
+    putStrLn("aiioosshhh")
+    main
+
+salir = do
+    putStrLn("aiioosshhh")
