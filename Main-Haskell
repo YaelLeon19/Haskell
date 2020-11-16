@@ -13,19 +13,19 @@ main = do
 opc n = do
     case n of
        1 ->serie
-       2 ->numeros
+       2 ->numerosd
        3 ->factorial
        4 ->desaparecer [1,2,3,4,5,6,7,8,9,10]
-       5 ->palindromo
+       5 ->palin
        6 ->calcu
        7 ->salir
-
+-- +++++++++ SERIE FIBONACCI +++++++++++++++
 serie = do
     putStrLn("Dame un numero de fibonacci")
     n <-getLine
     print("El numero es "++show(fibo(read n)))
 
-fibo n =
+fibo n = do
   if  n == 0
     then
       0
@@ -34,19 +34,19 @@ fibo n =
       1
   else
     fibo(n-1) + fibo(n-2)
-
-numeros = do
+-- +++++++++ NUMEROS DEL 1 AL 10 +++++++++++++++
+numerosd = do
     condicional 1
 
 condicional n = do
     if n <= 10
         then do
-            print n
+            print n 
             condicional(n+1)
-    else
-        putStrLn("Termina")
-        main
-
+    else do
+        print("Termina")
+        main 
+-- +++++++++ FACTORIAL DE UN NUM +++++++++++++++
 factorial = do
     putStrLn("Digita un numero")
     num <- getLine
@@ -57,7 +57,7 @@ facto n = do
         then 1
     else
         n*facto(n-1)
-
+-- +++++++++ DESAPARECER +++++++++++++++
 desaparecer x = do
   print(x)
   if null x
@@ -66,15 +66,15 @@ desaparecer x = do
     main
   else do
     let lista = init x
-    numeros(lista) 
-
-palindromo = do
+    print(".")
+-- +++++++++ PALINDROMO +++++++++++++++
+palin = do
     putStrLn("Dame un palindromo")
-    x <- getLine
+    x <- getLine 
     let n = x==reverse x
-    print(n)  
+    print(n)
     main
-
+-- +++++++++ CALCULADORA +++++++++++++++
 calcu = do
     putStrLn ("1. -Suma")
     putStrLn ("2.- Multiplicaciom")
@@ -140,6 +140,6 @@ divi a b = do
 sal = do
     putStrLn("aiioosshhh")
     main
-
+-- +++++++++ SALIR DEL PROGRAMA +++++++++++++++
 salir = do
     putStrLn("aiioosshhh")
